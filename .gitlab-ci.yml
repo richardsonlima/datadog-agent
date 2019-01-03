@@ -144,7 +144,7 @@ before_script:
 # run tests for deb-x64
 run_tests_deb-x64:
   stage: source_test
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:2xlarge" ]
   allow_failure: true
   script:
@@ -153,7 +153,7 @@ run_tests_deb-x64:
 # run tests for rpm-x64
 run_test_rpm-x64:
   stage: source_test
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/rpm_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/rpm_x64:v944905-110f2dd
   tags: [ "runner:main", "size:2xlarge" ]
   allow_failure: true
   script:
@@ -190,7 +190,7 @@ run_security_scan_test:
 # build dogstatsd static for deb-x64
 build_dogstatsd_static-deb_x64:
   stage: binary_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   script:
     - inv -e dogstatsd.build --static
@@ -199,7 +199,7 @@ build_dogstatsd_static-deb_x64:
 # build puppy agent for deb-x64, to make sure the build is not broken because of build flags
 build_puppy_agent-deb_x64:
   stage: binary_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   script:
     - inv -e agent.build --puppy
@@ -208,7 +208,7 @@ build_puppy_agent-deb_x64:
 # build puppy agent for ARM, to make sure the build is not broken because of build targets
 build_puppy_agent-deb_x64_arm:
   stage: binary_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   script:
     - GOOS=linux GOARCH=arm inv -e agent.build --puppy
@@ -216,7 +216,7 @@ build_puppy_agent-deb_x64_arm:
 # build dogstatsd for deb-x64
 build_dogstatsd-deb_x64:
   stage: binary_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   script:
     - inv -e dogstatsd.build
@@ -225,7 +225,7 @@ build_dogstatsd-deb_x64:
 # build cluster-agent bin
 cluster_agent-build:
   stage: binary_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   script:
     - inv -e cluster-agent.build
@@ -262,7 +262,7 @@ cluster_agent-build:
 # check the size of the static dogstatsd binary
 run_dogstatsd_size_test:
   stage: integration_test
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   before_script:
     # Disable global before_script
@@ -279,7 +279,7 @@ run_dogstatsd_size_test:
 # build Agent package for deb-x64
 agent_deb-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:2xlarge" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -306,7 +306,7 @@ agent_deb-x64:
 # build Agent package for deb-x64
 puppy_deb-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:2xlarge" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -333,7 +333,7 @@ puppy_deb-x64:
 # build Agent package for rpm-x64
 agent_rpm-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/rpm_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/rpm_x64:v944905-110f2dd
   tags: [ "runner:main", "size:2xlarge" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -364,7 +364,7 @@ agent_rpm-x64:
 # build Agent package for rpm-x64
 agent_suse-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/suse_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/suse_x64:v944905-110f2dd
   tags: [ "runner:main", "size:2xlarge" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -430,7 +430,7 @@ build_windows_msi_x64:
 # build Agent package for android
 agent_android_apk:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/android_builder:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/android_builder:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -460,7 +460,7 @@ agent_android_apk:
 # build Dogstastd package for deb-x64
 dogstatsd_deb-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deb_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -487,7 +487,7 @@ dogstatsd_deb-x64:
 # build Dogstastd package for rpm-x64
 dogstatsd_rpm-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/rpm_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/rpm_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -519,7 +519,7 @@ dogstatsd_rpm-x64:
 # build Dogstastd package for rpm-x64
 dogstatsd_suse-x64:
   stage: package_build
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/suse_x64:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/suse_x64:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   variables:
     AWS_CONTAINER_CREDENTIALS_RELATIVE_URI: /credentials
@@ -550,7 +550,7 @@ dogstatsd_suse-x64:
 # deploy debian packages to apt staging repo
 deploy_deb_testing:
   stage: testkitchen_deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   <<: *run_when_testkitchen_triggered
@@ -577,7 +577,7 @@ deploy_deb_testing:
 deploy_rpm_testing:
   <<: *run_when_testkitchen_triggered
   stage: testkitchen_deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -594,7 +594,7 @@ deploy_rpm_testing:
 deploy_suse_rpm_testing:
   <<: *run_when_testkitchen_triggered
   stage: testkitchen_deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR_SUSE
   tags: [ "runner:main", "size:large" ]
@@ -611,7 +611,7 @@ deploy_suse_rpm_testing:
 deploy_windows_testing:
   <<: *run_when_testkitchen_triggered
   stage: testkitchen_deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -756,7 +756,7 @@ kitchen_debian:
 # run dd-agent-testing
 testkitchen_cleanup_s3:
   stage: testkitchen_cleanup
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   <<: *run_when_testkitchen_triggered
   tags: [ "runner:main", "size:large" ]
   before_script:
@@ -951,7 +951,7 @@ dev_master_quay:
 check_already_deployed_version:
   <<: *run_when_triggered
   stage: check_deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -966,7 +966,7 @@ check_already_deployed_version:
 deploy_deb:
   <<: *run_when_triggered
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -997,7 +997,7 @@ deploy_deb:
 # deploy windows packages to a public s3 bucket when pushed on master
 deploy_windows_master:
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   <<: *run_when_triggered_on_nightly
@@ -1009,7 +1009,7 @@ deploy_windows_master:
 # deploy windows packages to a public s3 bucket when tagged
 deploy_windows_tags:
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   <<: *run_when_triggered_on_tag
@@ -1024,7 +1024,7 @@ deploy_windows_tags:
 # deploy android packages to a public s3 bucket when tagged
 deploy_android_tags:
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   <<: *run_when_triggered_on_tag
@@ -1036,7 +1036,7 @@ deploy_android_tags:
 deploy_rpm:
   <<: *run_when_triggered
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -1057,7 +1057,7 @@ deploy_rpm:
 deploy_suse_rpm:
   <<: *run_when_triggered
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR_SUSE
   tags: [ "runner:main", "size:large" ]
@@ -1078,7 +1078,7 @@ deploy_suse_rpm:
 deploy_dsd:
   <<: *run_when_triggered
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -1091,7 +1091,7 @@ deploy_dsd:
 deploy_puppy:
   <<: *run_when_triggered
   stage: deploy
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -1152,7 +1152,7 @@ dca_latest_release:
 deploy_cloudfront_invalidate:
   <<: *run_when_triggered
   stage: deploy_invalidate
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   before_script:
     - ls $OMNIBUS_PACKAGE_DIR
   tags: [ "runner:main", "size:large" ]
@@ -1168,7 +1168,7 @@ deploy_cloudfront_invalidate:
 
 .pupernetes_template: &pupernetes_template
   stage: e2e
-  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944453-0fafd58
+  image: 486234852809.dkr.ecr.us-east-1.amazonaws.com/ci/datadog-agent-builders/deploy:v944905-110f2dd
   tags: [ "runner:main", "size:large" ]
   before_script: [ "# noop" ] # Override top level entry
   script:
